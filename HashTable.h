@@ -31,6 +31,7 @@ class HashTable {
     private:
         std::vector<Node*> table; // Table Represented as Vector
         virtual size_t hash(std::string key) const = 0;
+        const size_t size;
 };
 
 #endif
