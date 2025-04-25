@@ -3,6 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <cmath>
+#include <map>
 #include "HashTable.h"
 
 // Constructors
@@ -100,17 +101,44 @@ Strong Hash Functions Should:
 */
 void HashTable::assessHashFunction() const {
     std::vector<size_t> bucketSizes(getTableSize(), 0);
+    std::map<std::string, size_t> histogram = {
+        {"0-99   ", 0},
+        {"100-199", 0},
+        {"200-299", 0},
+        {"300-399", 0},
+        {"400-499", 0},
+        {"500-599", 0},
+        {"600-699", 0},
+        {"700-799", 0},
+        {"800-899", 0},
+        {"900-999", 0}
+    };
+
     size_t totalItems = 0;
 
     for (size_t i = 0; i < getTableSize(); i++) {
         Node* cur = table.at(i);
+        size_t curSize = 0;
 
         while (cur) {
             bucketSizes.at(i)++;
-            totalItems++;
+            curSize++;
 
             cur = cur->next;
         }
+        
+        totalItems += curSize;
+
+        if (i < 100) histogram.at("0-99   ") += curSize;
+        else if (i < 200) histogram.at("100-199") += curSize;
+        else if (i < 300) histogram.at("200-299") += curSize;
+        else if (i < 400) histogram.at("300-399") += curSize;
+        else if (i < 500) histogram.at("400-499") += curSize;
+        else if (i < 600) histogram.at("500-599") += curSize;
+        else if (i < 700) histogram.at("600-699") += curSize;
+        else if (i < 800) histogram.at("700-799") += curSize;
+        else if (i < 900) histogram.at("800-899") += curSize;
+        else histogram.at("900-999") += curSize;
     }
 
     // Basic Stats
@@ -121,11 +149,18 @@ void HashTable::assessHashFunction() const {
     
     // Variance Calculation
     double variance = 0;
-    for (auto &size : bucketSizes) variance += (size - averageSize) * (size - averageSize);
+    for (auto &size : bucketSizes) {
+        variance += (size - averageSize) * (size - averageSize);
+    }
     
     // Standard Deviation Calculation
     variance /= getTableSize();
     double standardDeviation = sqrt(variance);
+    
+    // Hash Function Data
+    std::cout << "------------------" << std::endl;
+    std::cout << "Hash Function Data" << std::endl;
+    std::cout << "------------------" << std::endl;
 
     std::cout << "Total Items: " << totalItems << std::endl;
     std::cout << "Load Factor: " << averageSize << std::endl; // Same as Average
@@ -134,6 +169,21 @@ void HashTable::assessHashFunction() const {
     std::cout << "Maximum Bucket Size: " << max << std::endl;
     std::cout << "Average Bucket size: " << averageSize << std::endl;
     std::cout << "Standard Deviation: " << standardDeviation << std::endl;
+
+    // Bucket Distribution as Histogram
+    std::cout << "-----------------------" << std::endl;
+    std::cout << "Bucket Distribution" << std::endl;
+    std::cout << "-----------------------" << std::endl;
+
+    for (auto &pair : histogram) {
+        std::cout << pair.first << ": ";
+
+        for (size_t i = 0; i < pair.second; i += 1000) {
+            std::cout << "*";
+        }
+
+        std::cout << std::endl;
+    }
 }
 
 size_t HashTable::getTableSize() const {
