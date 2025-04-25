@@ -5,6 +5,7 @@
 #include <vector>
 #include <fstream>
 
+// Hash Table Abstract Base Class
 class HashTable {
     public:
         HashTable(); // Constructor
