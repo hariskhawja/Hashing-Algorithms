@@ -10,13 +10,14 @@ class HashTable {
         HashTable(size_t S); // Constructor with User-Defined Slot Number
         static const size_t defaultSize = 1000;
         
+        void insert(std::string val);
+
         // True if Operation Successful
         bool lookup(std::string val) const;
-        bool insert(std::string val);
         bool remove(std::string val);
 
         void listAll() const;
-        void hashData() const;
+        void assessHashFunction() const;
 
     protected:
         virtual ~HashTable(); // Destructor
@@ -30,8 +31,7 @@ class HashTable {
 
     private:
         std::vector<Node*> table; // Table Represented as Vector
-        virtual size_t hash(std::string key) const = 0;
-        const size_t size;
+        virtual int hash(std::string key) const = 0;
 };
 
 #endif
