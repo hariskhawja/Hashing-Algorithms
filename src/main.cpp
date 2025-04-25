@@ -4,7 +4,7 @@
 
 int main() {
     std::ifstream words_alpha;
-    words_alpha.open("words_alpha.txt");
+    words_alpha.open("../inputFiles/words_alpha.txt");
 
     NaiveTable nt {};
 
