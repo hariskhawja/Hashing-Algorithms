@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <numeric>
+#include <cmath>
 #include "HashTable.h"
 #include "MultiplicationTable.h"
 
@@ -14,7 +15,7 @@ MultiplicationTable::~MultiplicationTable() {}; // Destructor
 // Multiplication Hash Function: floor(table_size * frac(char_sum * A))
 int MultiplicationTable::hash(std::string val) const {
     const size_t sum = std::accumulate(val.begin(), val.end(), 0);
-    const double A = 0.5; // Randomly Selected A value
+    const double A = 0.6180339887; // Randomly Selected A Value: Golden Ratio
 
-    return floor( getTableSize() * (sum - floor(sum * A)) );
+    return static_cast<size_t>(floor( getTableSize() * (sum*A - floor(sum*A)) ));
 }

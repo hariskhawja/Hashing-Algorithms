@@ -1,5 +1,5 @@
-#ifndef NAIVETABLE_H
-#define NAIVETABLE_H
+#ifndef MULTIPLICATIONTABLE_H
+#define MULTIPLICATIONTABLE_H
 
 #include <string>
 #include <vector>

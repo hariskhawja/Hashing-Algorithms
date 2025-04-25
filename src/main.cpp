@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include "NaiveTable.h"
+#include "MultiplicationTable.h"
 
 int main() {
     std::ifstream words_alpha;
@@ -10,10 +11,14 @@ int main() {
 
     nt.insert(words_alpha);
     nt.assessHashFunction();
-
+    
     words_alpha.close();
     words_alpha.open("../inputFiles/words_alpha.txt");
 
+    MultiplicationTable mt {};
+
+    mt.insert(words_alpha);
+    mt.assessHashFunction();
 
     words_alpha.close();
 
