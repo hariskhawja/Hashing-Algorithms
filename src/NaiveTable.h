@@ -6,7 +6,7 @@
 #include <fstream>
 #include "HashTable.h"
 
-// Hash Table Implementation With a Naive Hash Function: char_sum % table_size
+// Hash Table Implementation With a Naive Hash Function: char_sum % table_size; aka Division Method
 class NaiveTable : public HashTable {
     public:
         NaiveTable(); // Constructor

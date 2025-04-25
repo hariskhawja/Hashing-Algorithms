@@ -11,7 +11,7 @@ NaiveTable::NaiveTable(size_t S) : HashTable(S) {};
 
 NaiveTable::~NaiveTable() {}; // Destructor
 
-// Naive Hash Function: char_sum % table_size
+// Naive Hash Function: char_sum % table_size; aka Division Method
 int NaiveTable::hash(std::string val) const {
     const size_t sum = std::accumulate(val.begin(), val.end(), 0);
 
