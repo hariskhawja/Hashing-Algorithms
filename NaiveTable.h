@@ -11,10 +11,8 @@ class NaiveTable : public HashTable {
     public:
         NaiveTable(); // Constructor
         NaiveTable(size_t S); // Constructor with User-Defined Slot Number
-        
-    protected:
         virtual ~NaiveTable(); // Destructor
-
+        
     private:
         virtual int hash(std::string key) const override;
 };

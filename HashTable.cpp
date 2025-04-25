@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <cmath>
 #include "HashTable.h"
 
 // Constructors
@@ -98,7 +99,7 @@ Strong Hash Functions Should:
     3. Be computationaly fast
 */
 void HashTable::assessHashFunction() const {
-    std::vector<size_t> bucketSizes {getTableSize(), 0};
+    std::vector<size_t> bucketSizes(getTableSize(), 0);
     size_t totalItems = 0;
 
     for (size_t i = 0; i < getTableSize(); i++) {
@@ -124,8 +125,9 @@ void HashTable::assessHashFunction() const {
     
     // Standard Deviation Calculation
     variance /= getTableSize();
-    double standardDeviation = std::sqrt(variance);
+    double standardDeviation = sqrt(variance);
 
+    std::cout << "Total Items: " << totalItems << std::endl;
     std::cout << "Load Factor: " << averageSize << std::endl; // Same as Average
     std::cout << "Empty Buckets: " << empty << "/" << getTableSize() << std::endl;
     std::cout << "Minimum Bucket Size: " << min << std::endl;
