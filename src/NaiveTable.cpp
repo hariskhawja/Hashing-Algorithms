@@ -13,7 +13,7 @@ NaiveTable::~NaiveTable() {}; // Destructor
 
 // Naive Hash Function: char_sum % table_size
 int NaiveTable::hash(std::string val) const {
-    size_t sum = std::accumulate(val.begin(), val.end(), 0);
+    const size_t sum = std::accumulate(val.begin(), val.end(), 0);
 
     return sum % getTableSize();
 }
