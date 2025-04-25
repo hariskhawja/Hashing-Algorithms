@@ -24,6 +24,13 @@ void HashTable::insert(std::string val) {
     table.at(tableSlot)->next = newValNode;
 }
 
+void HashTable::insert(std::ifstream &file) {
+    std::string word;
+    while (file >> word) {
+        insert(word);
+    }
+}
+
 bool HashTable::lookup(std::string val) const {
     const size_t tableSlot = hash(val);
 

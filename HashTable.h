@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <fstream>
 
 class HashTable {
     public:
@@ -11,6 +12,7 @@ class HashTable {
         static const size_t defaultSize = 1000;
         
         void insert(std::string val);
+        void insert(std::ifstream &file);
 
         // True if Operation Successful
         bool lookup(std::string val) const;
