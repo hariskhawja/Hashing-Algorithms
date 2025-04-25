@@ -17,5 +17,5 @@ int MultiplicationTable::hash(std::string val) const {
     const size_t sum = std::accumulate(val.begin(), val.end(), 0);
     const double A = 0.6180339887; // Randomly Selected A Value: Golden Ratio
 
-    return static_cast<size_t>(floor( getTableSize() * (sum*A - floor(sum*A)) ));
+    return static_cast<int>(floor( getTableSize() * (sum*A - floor(sum*A)) ));
 }
