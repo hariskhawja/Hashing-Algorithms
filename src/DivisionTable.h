@@ -6,7 +6,7 @@
 #include <fstream>
 #include "HashTable.h"
 
-// Hash Table Implementation With a Division Hash Function: (char_sum / large_prime) % table_size
+// Hash Table Implementation With a Division Hash Function: char_sum % large_prime
 class DivisionTable : public HashTable {
     public:
         DivisionTable(); // Constructor
