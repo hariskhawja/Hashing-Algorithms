@@ -4,9 +4,11 @@
 #include <algorithm>
 #include "HashTable.h"
 
+// Constructors
 HashTable::HashTable() : table{HashTable::defaultSize} {}
 HashTable::HashTable(size_t S) : table{S} {}
 
+// Destructor
 HashTable::~HashTable() {
     for (auto &i : table) {
         while (i) {
