@@ -21,7 +21,7 @@ void HashTable::insert(std::string val) {
     const size_t tableSlot = hash(val);
 
     Node* newValNode = new Node{val, table.at(tableSlot)};
-    table.at(tableSlot)->next = newValNode;
+    table.at(tableSlot) = newValNode;
 }
 
 void HashTable::insert(std::ifstream &file) {
@@ -114,7 +114,7 @@ void HashTable::assessHashFunction() const {
     size_t empty = std::count(bucketSizes.begin(), bucketSizes.end(), 0);
     size_t min = *std::min_element(bucketSizes.begin(), bucketSizes.end());
     size_t max = *std::max_element(bucketSizes.begin(), bucketSizes.end());
-    double averageSize = static_cast<double>(totalItems / getTableSize());
+    double averageSize = static_cast<double>(totalItems) / getTableSize();
     
     // Variance Calculation
     double variance = 0;
